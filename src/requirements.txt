@@ -1,0 +1,7 @@
+numpy
+pandas
+flask
+opencv-python
+keras
+tensorflow
+
