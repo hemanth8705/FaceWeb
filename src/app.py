@@ -6,6 +6,9 @@ import os
 
 app = Flask(__name__)
 
+source = "default_video"
+file_name = ""
+
 # Set the upload folder for videos
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -134,8 +137,3 @@ def index():
     # cap.release()
     return render_template('index.html')
 
-if __name__ == "__main__":
-    source = "default_video"
-    file_name = ""
-    app.run(debug=True)
-    # app.run(host ='0.0.0.0' , port = 8080)
