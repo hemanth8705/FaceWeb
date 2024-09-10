@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html>
+<body>
 
-
-  <body>
     <h1>Live streaming</h1>
+    
     <div>
-
-        <img src="{{url_for('video')}}" width="50%"/>
+        <!-- Camera button for live stream -->
+        <a href="/handle_camera">
+            <button>Camera</button>
+        </a>
+        
+        <!-- File input button to select image or video from device -->
+        <form method="POST" enctype="multipart/form-data" action="/handle_media_upload">
+            <input type="file" accept="image/*, video/*" id="media_input" style="display:none" name="media_file">
+            <button type="button" onclick="document.getElementById('media_input').click();">Upload Media</button>
+            <input type="submit" id="media_submit" style="display:none">
+        </form>
     </div>
-            
-    </body>
+    
+    <div>
+        <img src="{{url_for('video_feed')}}" width="50%"/>
+    </div>
 
+    <script>
+        // Automatically submit the form when the user selects an image or video file
+        document.getElementById('media_input').addEventListener('change', function() {
+            document.getElementById('media_submit').click();
+        });
+    </script>
 
+</body>
 </html>
