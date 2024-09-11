@@ -1,7 +1,4 @@
 <p align="center">
-  <img src="https://img.icons8.com/?size=512&id=55494&format=png" width="20%" alt="FACEWEB-logo">
-</p>
-<p align="center">
     <h1 align="center">FACEWEB</h1>
 </p>
 <p align="center">
@@ -123,7 +120,7 @@ Build the project from source:
 
 3. Install the required dependencies:
 ```sh
-❯ ❯ INSERT-INSTALL-COMMANDS
+❯ ❯ pip install -r requirements.txt
 ```
 
 ###  Usage
@@ -131,16 +128,9 @@ Build the project from source:
 To run the project, execute the following command:
 
 ```sh
-❯ ❯ INSERT-RUN-COMMANDS
+❯ ❯ python app.py
 ```
 
-###  Tests
-
-Execute the test suite using the following command:
-
-```sh
-❯ ❯ INSERT-TEST-COMMANDS
-```
 
 ---
 
