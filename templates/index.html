@@ -1,25 +1,154 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Detection</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 40px;
+            font-size: 2.5rem;
+            color: #444;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            background-color: white;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 40px;
+            margin-top: 20px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 20px;
+        }
+
+        button {
+            font-size: 1rem;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .upload-section, .camera-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .upload-section input[type="file"] {
+            display: none;
+        }
+
+        .emotion-list {
+            margin: 20px auto; /* Horizontally centers the element */
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    width: 80%; /* Define a width, or use a specific pixel value */
+        }
+
+        .emotion-list h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+            left: 20%;
+            position: relative;
+        }
+
+        .emotion-list ul {
+            list-style: none;
+            padding: 0;
+            font-size: 1rem;
+        }
+
+        .emotion-list ul li {
+            padding: 5px 0;
+        }
+
+        img {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin-top: 20px;
+            max-width: 80%;
+            left: 10%;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .btn-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            button {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
 <body>
 
-    <h1>Live streaming</h1>
-    
-    <div>
-        <!-- Camera button for live stream -->
-        <a href="/handle_camera">
-            <button>Camera</button>
-        </a>
-        
-        <!-- File input button to select image or video from device -->
-        <form method="POST" enctype="multipart/form-data" action="/handle_media_upload">
-            <input type="file" accept="image/*, video/*" id="media_input" style="display:none" name="media_file">
-            <button type="button" onclick="document.getElementById('media_input').click();">Upload Media</button>
-            <input type="submit" id="media_submit" style="display:none">
-        </form>
-    </div>
-    
-    <div>
-        <img src="{{url_for('video_feed')}}" width="50%"/>
+    <h1>Emotion Detection</h1>
+
+    <div class="container">
+        <div class="emotion-list">
+            <h2>
+                Angry , Fear , Happy , Neutral , Sad , Surprise
+            </h2>
+
+                
+
+        </div>
+
+        <div class="btn-container">
+            <!-- Camera button for live stream -->
+            <div class="camera-section">
+                <a href="/handle_camera">
+                    <button>Start Camera</button>
+                </a>
+            </div>
+
+            <!-- File input button to select image or video from device -->
+            <div class="upload-section">
+                <form method="POST" enctype="multipart/form-data" action="/handle_media_upload">
+                    <input type="file" accept="image/*, video/*" id="media_input" name="media_file">
+                    <button type="button" onclick="document.getElementById('media_input').click();">Upload Media</button>
+                    <input type="submit" id="media_submit" style="display:none">
+                </form>
+            </div>
+        </div>
+
+        <!-- Video feed display -->
+        <div>
+            <img src="{{url_for('video_feed')}}" alt="Video feed" />
+        </div>
     </div>
 
     <script>
